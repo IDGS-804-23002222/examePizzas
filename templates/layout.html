@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f1f5f9;
+        }
+
+        .sidebar {
+            background: #1e293b;
+        }
+
+        .sidebar a {
+            transition: all .2s;
+        }
+
+        .sidebar a:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+    <div class="flex h-screen">
+        <aside class="sidebar w-64 text-white flex flex-col">
+            <div class="p-6 border-b border-slate-700 flex items-center gap-3">
+                <img src="{{url_for('static',filename='img/cesar.jpeg')}}" class="w-8">
+                <h1 class="text-xl font-bold">
+                    Little<span class="text-orange-400"> Ceasar's</span>
+                </h1>
+            </div>
+
+            <nav class="flex-1 p-4 space-y-2">
+                <a href="{{ url_for('index') }}" class="block px-4 py-3 rounded-lg font-semibold">
+                    Inicio
+                </a>
+                <a href="{{ url_for('pedidos.index') }}" class="block px-4 py-3 rounded-lg font-semibold">
+                    Pedidos
+                </a>
+                <a href="{{ url_for('ventas.index') }}" class="block px-4 py-3 rounded-lg font-semibold">
+                    Reportes
+                </a>
+            </nav>
+
+            <div class="p-4 text-sm text-slate-400 border-t border-slate-700">
+                Little Ceasar's Pizza
+            </div>
+
+        </aside>
+        <div class="flex-1 flex flex-col">
+            <header class="bg-white shadow px-6 py-4 flex justify-between items-center">
+                <h2 class="text-lg font-bold text-slate-700">
+                    Panel de control
+                </h2>
+
+                <div class="text-sm text-gray-500">
+                    Little Ceasar's Pizza &copy; {{ current_year }}
+                </div>
+            </header>
+
+            <main class="flex-1 p-6 overflow-y-auto">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="space-y-3 mb-6">
+                    {% for message in messages %}
+                    <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded shadow">
+                        <span class="text-green-700 font-semibold">
+                            {{ message }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <div class="bg-white rounded-xl shadow p-6">
+                    {% block container %}
+                    {% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+
+</html>

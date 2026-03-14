@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div style="max-width:900px; margin:auto; padding:40px; text-align:center;">
+
+    <h1 style="font-size:3rem; font-weight:800; color:#1f2937; margin-bottom:10px;">
+        Little Ceasar's Pizza
+    </h1>
+
+    <p style="color:#6b7280; margin-bottom:40px; font-size:1.1rem;">
+        Gestión de pedidos y consultas de ventas
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:25px;">
+
+        <a href="{{ url_for('pedidos.index') }}"
+        style="background:white;
+               border-radius:14px;
+               padding:40px;
+               text-decoration:none;
+               box-shadow:0 8px 20px rgba(0,0,0,0.08);
+               transition:0.3s;">
+
+            <h3 style="margin-top:15px; color:#ea580c; font-size:1.4rem;">
+                Nuevo Pedido
+            </h3>
+
+            <p style="color:#6b7280; margin-top:5px;">
+                Registrar un nuevo pedido de pizzas
+            </p>
+
+        </a>
+
+        <a href="{{ url_for('ventas.index') }}"
+        style="background:white;
+               border-radius:14px;
+               padding:40px;
+               text-decoration:none;
+               box-shadow:0 8px 20px rgba(0,0,0,0.08);
+               transition:0.3s;">
+
+            <h3 style="margin-top:15px; color:#2563eb; font-size:1.4rem;">
+                Consultas
+            </h3>
+
+            <p style="color:#6b7280; margin-top:5px;">
+                Ver ventas por día o por mes
+            </p>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
